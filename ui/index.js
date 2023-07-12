@@ -44,17 +44,30 @@
                     searchOptions = searchOptions + "F"
                 }
             })
-            console.log(searchOptions)
-            await invoke("search", {query: document.getElementById("SearchBox").value, parameters: searchOptions});
+            return invoke("search", {query: document.getElementById("SearchBox").value, parameters: searchOptions})
+
+            // return await invoke("search", {query: document.getElementById("SearchBox").value, parameters: searchOptions})
+        }
+
+        async function close(){
+            await invoke("close", {})
         }
 
         window.addEventListener("DOMContentLoaded", () => {
             console.log("Site Loaded")
             // define on enter press
             document.addEventListener('keydown', function(event){
-                console.log(event)
                 if (event.code==="Enter"){
-                    search();
+                    search().then(Data => {
+                        if (Data == 0) {
+                            // failures
+                        } else {
+                            console.log("Requested site loaded")
+                        }
+                    }).catch(e => {
+                        console.log(e)
+                    });
+                    
                 }
             })
         })
