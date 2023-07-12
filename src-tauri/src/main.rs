@@ -24,8 +24,13 @@ fn search(query: String, parameters: &str) -> u8{
   let mut final_query: String = ["https://www.google.com/search?q=", &encode(query.as_str())].join("");
   let mut site_adder: String;
   let mut check: bool = false;
+  let length = options.len() - 1;
 
-  for site in 0..3{
+
+
+  
+
+  for site in 0..length{
     if options[site] != ""{
       if check{
         site_adder = "+OR+site%3A".to_string();
@@ -37,12 +42,13 @@ fn search(query: String, parameters: &str) -> u8{
     }
   }
 
+
+  // invoke webbrowser to open constructed query, return status code to frontend
   if webbrowser::open(&final_query).is_ok() {
     return 1
   } else {
     return 0
   }
-  // return final_query;
 }
 
 

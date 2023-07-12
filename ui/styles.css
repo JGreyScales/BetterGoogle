@@ -30,6 +30,23 @@ searchOptions{
     flex-direction: row;
 }
 
+popup{
+    height: 0px;
+    transform: translate(-0.7%, 0);
+
+    font-size: x-large;
+    font-style:oblique;
+    font-family: monospace, 'Arial Narrow Bold', sans-serif;
+    text-align: center;
+    color: black;
+
+    
+    background-color: rgba(255, 255, 255, 0.644);
+    border-width: 5px;
+    border-radius: 10px;
+    border-color: black;
+}
+
 #MainTitle{
     right:2%;
 }
@@ -51,6 +68,8 @@ searchOptions{
 } ::placeholder {
     color:black
 }
+
+
 
 
 .Selectable{
